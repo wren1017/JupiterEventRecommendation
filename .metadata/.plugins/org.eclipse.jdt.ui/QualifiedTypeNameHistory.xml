@@ -4,9 +4,6 @@
 <fullyQualifiedTypeName name="external.TicketMasterClient"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
-<fullyQualifiedTypeName name="db.DBConnection"/>
-<fullyQualifiedTypeName name="db.DBConnectionFactory"/>
-<fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -16,4 +13,9 @@
 <fullyQualifiedTypeName name="org.json.JSONException"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="entity.Item"/>
+<fullyQualifiedTypeName name="db.mongodb.MongoDBConnection"/>
+<fullyQualifiedTypeName name="db.DBConnection"/>
+<fullyQualifiedTypeName name="db.DBConnectionFactory"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>
