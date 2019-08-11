@@ -170,9 +170,6 @@ public class MongoDBConnection implements DBConnection {
 	    return document.getString("password").equals(password);
 	}
 	
-	
-	//no registerUser in the interface
-	/*
 	@Override
 	public boolean registerUser(String userId, String password, String firstname, String lastname) {
 	  FindIterable<Document> iterable = db.getCollection("users").find(eq("user_id", userId));
@@ -184,6 +181,5 @@ public class MongoDBConnection implements DBConnection {
 	  }
 	  return false;
 	}
-	*/
 
 }

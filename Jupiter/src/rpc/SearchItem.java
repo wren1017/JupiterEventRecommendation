@@ -2,7 +2,9 @@ package rpc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,7 +49,7 @@ public class SearchItem extends HttpServlet {
 		}
 		
 		String userId = session.getAttribute("user_id").toString();
-		
+		//not using userid from request to ensure logged in
 		
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lon = Double.parseDouble(request.getParameter("lon"));
@@ -58,9 +60,20 @@ public class SearchItem extends HttpServlet {
 		DBConnection connection = DBConnectionFactory.getConnection();
 		try {
 			List<Item> items = connection.searchItems(lat, lon, term);
+			
+			//show as favorite if the event is already a favorite of the user
+			Set<String> favoritedItemIds = connection.getFavoriteItemIds(userId);
+			
+			//remove duplicate event from ticketmaster api
+			Set<String> eventNames = new HashSet<>();
+			
         	JSONArray array = new JSONArray();
         	for (Item item : items) {
-        		array.put(item.toJSONObject());
+        		if (eventNames.add(item.getName())) {
+                	JSONObject obj = item.toJSONObject();
+        			obj.put("favorite", favoritedItemIds.contains(item.getItemId()));
+                	array.put(obj);
+        		}
         	}
         	RpcHelper.writeJsonArray(response, array);
 		} 
